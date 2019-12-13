@@ -77,27 +77,25 @@ function createScene() {
 function mondrian(x,y,w,h, color){
     addBox(x,y,w,h,color);
 
-    if((w > NWIDTH*0.5 && h > NHEIGHT*0.5) ||(canSplit(w) && canSplit(h))){
-      nw = split(w);
-      nh = split(h);
-      mondrian(x,y,nw,nh, color);
+    if((w > NWIDTH*0.5 && h > NHEIGHT*0.5)){
+      nx= split(w)
+      ny= split(h)
+      mondrian(x,y,nx,ny,color)
+      mondrian(x+nx,y,w-nx,ny,color)
+      mondrian(x+nx,y+ny,w-nx,h-ny,color)
+      mondrian(x,y+ny,nx,h-ny,color)
     }
-    //   mondrian(x+nw,y,w-nw,nh, color);
-    //   mondrian(x,y+nh,nw,h-nh, color);
-    //   mondrian(x+nw,y+nh,w-nw,h-nh, color);
-    // }
-    // else if(w > NWIDTH*0.5 || canSplit(w)){
-    //   nw = split(w);
-    //   mondrian(x,y,nw,h, color);
-    //   mondrian(x+nw,y,w-nw,h, color);
-    //
-    // }
-    // else if(h > NHEIGHT*0.5 || canSplit(h)){
-    //   nh = split(h);
-    //   mondrian(x,y,w,nh, color);
-    //   mondrian(x,y+nh,w,h-nh, color);
-    //
-    // }
+    else if(w > NWIDTH*0.5){
+      nx= split(w)
+      mondrian(x,y, nx, h,color)
+      mondrian(x+nx,y,w-nx, h,color)
+
+    }
+    else if(h > NHEIGHT*0.5){
+      ny= split(h)
+      mondrian(x,y,w,ny,color)
+      mondrian(x,y+ny,w,h-ny,color)
+    }
     else{
       return true;
     }
@@ -119,15 +117,14 @@ function canSplit(dim){
 }
 
 function split(dim){
-  return ((1+Math.random())/3)*dim;
+  return Math.floor( ((1+Math.random()*2)/3)*dim );
 }
 
 function addBox(x,y,w,h,ncolor){
-
   x = x + w/2;
   y = y + h/2;
 
-  var geomBox1 = new THREE.BoxGeometry(w, 10, 10, 1, 1, 1);
+  var geomBox1 = new THREE.BoxGeometry(w, 1, 0, 1, 1, 1);
   var boxMat1  = new THREE.MeshPhongMaterial(
                              { color : ncolor});
 
@@ -137,7 +134,7 @@ function addBox(x,y,w,h,ncolor){
   scene.add(box1);
 
 //Second box
-  var geomBox1 = new THREE.BoxGeometry(w, 10, 10, 1, 1, 1)
+  var geomBox1 = new THREE.BoxGeometry(w, 1, 0, 1, 1, 1)
   var boxMat1  = new THREE.MeshPhongMaterial(
                              { color : ncolor});
 
@@ -146,7 +143,7 @@ function addBox(x,y,w,h,ncolor){
   box1.position.set(x,y+h/2,0);
   scene.add(box1);
 
-  var geomBox1 = new THREE.BoxGeometry(10, h, 0, 1, 1, 1);
+  var geomBox1 = new THREE.BoxGeometry(1, h, 0, 1, 1, 1);
   var boxMat1  = new THREE.MeshPhongMaterial(
                              { color : ncolor});
 
@@ -155,7 +152,7 @@ function addBox(x,y,w,h,ncolor){
   box1.position.set(x-w/2,y,0);
   scene.add(box1);
 
-  var geomBox1 = new THREE.BoxGeometry(10, h, 10, 1, 1, 1);
+  var geomBox1 = new THREE.BoxGeometry(1, h, 0, 1, 1, 1);
   var boxMat1  = new THREE.MeshPhongMaterial(
                              { color : ncolor});
 

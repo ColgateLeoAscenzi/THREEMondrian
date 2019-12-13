@@ -165,63 +165,6 @@ function addBox(x,y,w,h,ncolor){
   scene.add(box1);
 
 }
-// function addBox(x,y,w,h, ncolor){
-//     xi = x;
-//     yi = y;
-//     console.log(xi,yi);
-//     for(var i = 0; i < w; i++){
-//
-//       var geomBox = new THREE.BoxGeometry(10, 10, 10, 1, 1, 1);
-//       var boxMat  = new THREE.MeshPhongMaterial(
-//                                  { color : ncolor});
-//
-//       var box = new THREE.Mesh(geomBox, boxMat);
-//
-//       box.position.set(xi,yi,0);
-//       xi+=10;
-//       scene.add(box);
-//
-//     }
-//     for(var i = 0; i < w; i++){
-//
-//       var geomBox = new THREE.BoxGeometry(10, 10, 10, 1, 1, 1);
-//       var boxMat  = new THREE.MeshPhongMaterial(
-//                                  { color : ncolor});
-//
-//       var box = new THREE.Mesh(geomBox, boxMat);
-//
-//       box.position.set(xi,yi,0);
-//       yi+=10;
-//       scene.add(box);
-//
-//     }
-//     for(var i = 0; i < w; i++){
-//
-//       var geomBox = new THREE.BoxGeometry(10, 10, 10, 1, 1, 1);
-//       var boxMat  = new THREE.MeshPhongMaterial(
-//                                  { color : ncolor});
-//
-//       var box = new THREE.Mesh(geomBox, boxMat);
-//
-//       box.position.set(xi,yi,0);
-//       xi-=10;
-//       scene.add(box);
-//
-//     }
-//     for(var i = 0; i < w; i++){
-//
-//       var geomBox = new THREE.BoxGeometry(10, 10, 10, 1, 1, 1);
-//       var boxMat  = new THREE.MeshPhongMaterial(
-//                                  { color : ncolor});
-//
-//       var box = new THREE.Mesh(geomBox, boxMat);
-//
-//       box.position.set(xi,yi,0);
-//       yi-=10;
-//       scene.add(box);
-//     }
-//
-// }
 
 
 
